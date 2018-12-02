@@ -1,17 +1,16 @@
 import React from "react";
 import "../style/resultItem.scss";
 import {Rating} from "./rating.js";
-import {mapWeekDay} from "../logic/mapWeekday.js";
 
-export const ResultList = ({list, updateKeyword}) => {
+export const ResultList = ({date, list, updateKeyword}) => {
   if (!list.length) {
     return <div className="empty-result">No Matched Restaurants</div>;
   }
-
   const results = list.map((item, index) => {
     return (
       <div key={`result-item-${index}`}>
         <ResultItem
+          date={date}
           resultId={index + 1}
           data={item}
           updateKeyword={updateKeyword}
@@ -28,18 +27,15 @@ export const ResultList = ({list, updateKeyword}) => {
   );
 };
 
-const ResultItem = ({resultId, data, updateKeyword}) => {
-  let weekDay = mapWeekDay(new Date().getDay());
-  weekDay = 5;
+const ResultItem = ({date, resultId, data, updateKeyword}) => {
   let filtered = data.hours.filter(slot =>
-    slot.open.some(day => day.day === weekDay)
+    slot.open.some(day => day.day === date.weekDay)
   );
-
   let todayOpenTime = filtered.map(slot =>
-    slot.open.filter(day => day.day === weekDay).map((day, index) => {
+    slot.open.filter(day => day.day === date.weekDay).map((day, index) => {
       return (
         <span key={`open-time-${index}`}>
-          {index === 0 && <span> 本日營業時間 : </span>}
+          {index === 0 && <span><span className="line-title"> Open hours ({date.display}) :</span> </span>}
           {index > 0 && ", "}
           <span>
             {day.start} ~ {day.end}
@@ -83,7 +79,7 @@ const ResultItem = ({resultId, data, updateKeyword}) => {
         <div />
         {todayOpenTime}
         <div>
-          {data.location.address1} ( {data.location.city} )
+          <span className="line-title">Address :</span> {data.location.address1} ( {data.location.city} )
         </div>
       </div>
     </div>

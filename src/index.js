@@ -11,6 +11,8 @@ import {FilterOptions} from "./components/FilterOptions.js";
 import {isRestaurantOpenNow} from "./logic/openTime.js";
 import {getPriceState} from "./logic/getPriceState.js";
 import {isMatchKeyword} from "./logic/filterKeyword.js";
+import {mapWeekDay} from "./logic/mapWeekday.js";
+import {today} from "./logic/date.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -27,20 +29,36 @@ class App extends React.Component {
       price: {$: true, $$: true, $$$: true, $$$$: true},
 
       // is open now filter button selected
-      isOpenNow: false
+      isOpenNow: false,
+
+      date: {display: today(), weekDay: mapWeekDay(new Date().getDay())}
     };
 
-    ["updateKeyword", "updatePrice", "updatePrice"].forEach(name => {
+    [
+      "updateKeyword",
+      "updatePrice",
+      "updateOpenTime",
+      "updateDate"
+    ].forEach(name => {
       this[name] = this[name].bind(this);
     });
   }
+
   componentDidMount() {
     // fetch json files, and sort fetched result by rating
     const itemListData = jsonData.data.search.business.sort(
-      (itemA, itemB) => itemA.rating - itemB.rating
+      (itemA, itemB) => itemB.rating - itemA.rating
     );
 
     this.setState({list: itemListData});
+  }
+  updateDate(e) {
+    this.setState({
+      date: {
+        display: e.currentTarget.value,
+        weekDay: mapWeekDay(new Date(e.currentTarget.value).getDay())
+      }
+    });
   }
   updateKeyword(keyword) {
     this.setState({keyword: keyword});
@@ -50,7 +68,13 @@ class App extends React.Component {
   }
   updateOpenTime() {
     this.setState(prevState => {
-      return {isOpenNow: !prevState.isOpenNow};
+      return {
+        isOpenNow: !prevState.isOpenNow,
+        date: {
+          display: today(),
+          weekDay: mapWeekDay(new Date().getDay())
+        }
+      };
     });
   }
 
@@ -69,9 +93,7 @@ class App extends React.Component {
 
     // filter results by if restaurants is open now.
     if (this.state.isOpenNow) {
-      list = list.filter(item =>
-        isRestaurantOpenNow(item.hours, item.name)
-      );
+      list = list.filter(item => isRestaurantOpenNow(item.hours));
     }
 
     // filter results by if a user inputs any keywowrd
@@ -87,6 +109,7 @@ class App extends React.Component {
           <div>
             <div className="search-row">
               <input
+                type="text"
                 value={this.state.keyword}
                 placeholder="Find a restanrant"
                 onChange={e =>
@@ -95,9 +118,12 @@ class App extends React.Component {
                   })
                 }
               />
-              <div className="location">
-                <span>Near Taipei</span>
-              </div>
+              <input
+                className="date"
+                type="date"
+                value={this.state.date.display}
+                onChange={this.updateDate}
+              />
             </div>
             <Category
               updateKeyword={this.updateKeyword}
@@ -119,11 +145,13 @@ class App extends React.Component {
               price={this.state.price}
               isOpenNow={this.state.isOpenNow}
               updatePrice={this.updatePrice}
+              updateDate={this.upateDate}
               updateOpenTime={this.updateOpenTime}
             />
             <ResultList
               updateKeyword={this.updateKeyword}
               list={list}
+              date={this.state.date}
             />
           </div>
         </main>

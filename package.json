@@ -1,5 +1,5 @@
 {
-    "name": "yelp",
+    "name": "taipei-food",
     "version": "1.0.0",
     "description": "",
     "scripts": {
@@ -8,8 +8,8 @@
         "build:stats": "webpack --env production --json > stats.json"
     },
     "keywords": [],
-    "author": "",
-    "license": "ISC",
+    "author": "skyying",
+    "license": "MIT",
     "devDependencies": {
         "babel-core": "^6.26.3",
         "babel-loader": "^7.1.4",
@@ -41,7 +41,6 @@
     "dependencies": {
         "node-sass": "^4.9.0",
         "react": "^16.4.1",
-        "react-apollo": "^2.3.2",
         "react-dom": "^16.4.1"
     }
 }
