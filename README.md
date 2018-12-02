@@ -11,7 +11,7 @@
 
 
 
-### Features
+## Features
 
 * Allow users to type keyword to filter restaurants. Includes keywords below.
   * restaurant name
@@ -45,33 +45,29 @@ Some people like to filter by food category, some like to filter by budgets, all
 
 
 
-# Install taipei-food
-
+## Install taipei-food
 
 #### Create a file path to clone Taipei-food
-
 ```
 $ mkdir projects
 $ cd projects
 ```
-
+<br/>
 #### Clone taipei-food under that path
-
 ```
 $ git clone git@github.com:skyying/taipei-food.git
 ```
-
+<br/>
 #### Go to taipei-food
-
 ```
 $ cd taipei-food
 ```
-
+<br/>
 #### Install packages
 ```
 npm install
 ```
-
+<br/>
 #### Run taipei-food
 ```
 npm start
