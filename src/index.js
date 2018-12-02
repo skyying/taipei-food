@@ -107,6 +107,7 @@ class App extends React.Component {
       <div>
         <header>
           <div>
+            <h1>Best food in Taipei</h1>
             <div className="search-row">
               <input
                 type="text"
