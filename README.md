@@ -53,21 +53,25 @@ $ mkdir projects
 $ cd projects
 ```
 <br/>
+
 #### Clone taipei-food under that path
 ```
 $ git clone git@github.com:skyying/taipei-food.git
 ```
 <br/>
+
 #### Go to taipei-food
 ```
 $ cd taipei-food
 ```
 <br/>
+
 #### Install packages
 ```
 npm install
 ```
 <br/>
+
 #### Run taipei-food
 ```
 npm start
