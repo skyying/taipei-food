@@ -1,0 +1,21 @@
+#star-wrapper{
+  span {
+    width: 18px;
+    display: inline-block;
+    height: 18px;
+    background: no-repeat 0 0 url("../images/stars.svg");
+    margin-right: 1px;
+  }
+  .empty {
+    background: no-repeat 0 0 url("../images/stars.svg");
+  }
+  .full {
+    background: no-repeat -23px 0 url("../images/stars.svg");
+  }
+  .half {
+    background: no-repeat -46px 0 url("../images/stars.svg");
+  }
+}
+
+
+

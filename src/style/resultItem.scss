@@ -1,9 +1,57 @@
+
+.empty-result{
+  
+  padding-top: 100px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 20px;
+
+}
+
 .result-item{
   display: flex;
   min-width: 320px;
   width: 100%;
-  img {
-    width: 180px;
-    height: 170px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e7e7e7;
+
+  .info{
+    line-height: 1.7;
+  }
+
+  h4 {
+    font-weight: 800;
+    font-size:18px;
+    margin-bottom: 5px;
+  }
+
+  .photo-box{
+    margin-right: 20px;
+    min-width: 210px;
+    width: 210px;
+    height: 140px;
+    overflow: hidden;
+  }
+  .rating-row{
+    padding: 3px 0;
+    display: flex;
+    color: #666;
+    font-weight: 12px;
+    align-items: start;
+    .reviews {
+      margin-left: 10px;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 1.2;
+    }
+  }
+  a {
+    cursor: pointer;
+    color: #0073BD;
+    &:hover{
+      text-decoration: underline;
+    }
   }
 }

@@ -1,0 +1,52 @@
+
+.filter-options{
+  margin-top: 10px;
+  padding-bottom: 40px;
+  display: flex;
+  a {
+    display: inline-block;
+    margin-right: 5px;
+    background-color: #F8F8F8;
+    border-radius: 30px;
+    padding: 5px 15px;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid #E6E6E6;
+    transition: all 0.5s;
+    &:hover{
+      border: 1px solid #BD081B;
+      transition: all 0.5s;
+    }
+  }
+  span{
+    margin-left: 20px;
+  }
+  a.opennow-btn{
+    padding-left: 35px;
+    padding-right: 15px;
+    background:#F8F8F8 no-repeat 15px 50% url("../images/clock.svg");
+    transition: all 0.5s;
+    &:hover{
+      border: 1px solid #BD081B;
+      color: #333;
+      transition: all 0.5s;
+    }
+  }
+
+  a.active {
+    background:#BD081B no-repeat 15px 50% url("../images/clock-active.svg");
+    color: #fff;
+    &:hover{
+    color: #fff;
+    }
+  }
+
+  a.on{
+    background:#BD081B;
+    color: #fff;
+  }
+}
+
+
+
+
