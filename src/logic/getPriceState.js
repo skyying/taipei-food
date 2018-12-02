@@ -1,5 +1,11 @@
+/*
+ * change price filter options base on a selected pirce tag 
+ * @param prevState object prevState of App
+ * return Object new price state
+ */
 export const getPriceState = (prevState, opt) => {
   let {price, isFirstToggle} = prevState;
+
   if (isFirstToggle && isAllPirceOptSelected(price)) {
     let updateOption = {};
     for (let option in prevState.price) {

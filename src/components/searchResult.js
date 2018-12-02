@@ -1,7 +1,7 @@
 import React from "react";
 import "../style/resultItem.scss";
 import {Rating} from "./rating.js";
-import {mapWeekDay} from "./constant.js";
+import {mapWeekDay} from "../logic/mapWeekday.js";
 
 export const ResultList = ({list, updateKeyword}) => {
   if (!list.length) {
